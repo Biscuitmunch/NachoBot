@@ -2,7 +2,6 @@ import Command, * as Types from '../../interfaces/Command';
 
 const ping: Command = {
     name: 'ping',
-    aliases: ['p'],
     execute: async ({
         client,
         rcon,

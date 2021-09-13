@@ -12,14 +12,20 @@ import { Rcon } from 'rcon-client';
 import Command from './interfaces/Command';
 import filterMessage from './modules/mentionFilter.module';
 import MinecraftServer from './modules/minecraft/rcon.module';
+import "./modules/music/events"
 
 // client instantiation
 import { Client, Collection, Message } from 'discord.js';
 import intents from './modules/intents.module';
+import DisTube, { Queue, Song } from 'distube';
+import distubeSongs from './modules/music/events';
 const client: any = new Client({ intents });
 
 // module import set up stuff
 const MODULES: { [index: string]: any } = {};
+
+client.distube = new DisTube(client, {emitNewSongOnly: true})
+
 
 if (!!config?.modules?.minecraft?.enabled) {
     MODULES.minecraft = {};
